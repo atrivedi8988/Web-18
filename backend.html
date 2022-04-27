@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+</head>
+
+<body>
+    <h2>Backend</h2>
+    <form id="investorsData">
+        <input id="investorName" type="text" placeholder="Enter your name">
+        <input id="investorImage" type="text" placeholder="Enter your image url">
+        <input id="investorCompany" type="text" placeholder="Enter your company">
+        <input id="investorLogo" type="text" placeholder="Enter your logo url">
+        <input type="submit">
+    </form>
+</body>
+
+</html>
+
+
+
+<script>
+
+document.querySelector("#investorsData").addEventListener("submit", presssubmit)
+
+var investorArr = JSON.parse(localStorage.getItem("investorinfo"))||[];
+
+
+
+function presssubmit(){
+    event.preventDefault()
+
+    var investorObj = {
+        name: investorsData.investorName.value,
+        img: investorsData.investorImage.value,
+        company: investorsData.investorCompany.value,
+        logo: investorsData.investorLogo.value,
+    };
+
+    // console.log(investorObj)
+    investorArr.push(investorObj)
+
+    console.log(investorArr)
+
+    localStorage.setItem("investorinfo",JSON.stringify(investorArr))
+
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<script>
+
+    document.querySelector("#investorsData").addEventListener("submit", presssubmit)
+
+
+
+    function presssubmit() {
+        event.preventDefault();
+
+        var investorObj = {};
+
+        var investorName = document.querySelector("#investorName").value
+        investorObj.name = investorName;
+        // localStorage.setItem("name", investorName)
+
+        var investorImage = document.querySelector("#investorImage").value
+        investorObj.img = investorImage;
+        // localStorage.setItem("img", investorImage)
+
+        var investorCompany = document.querySelector("#investorCompany").value
+        investorObj.company = investorCompany;
+        // localStorage.setItem("company", investorCompany)
+
+        var investorLogo = document.querySelector("#investorLogo").value
+        investorObj.logo = investorLogo;
+        // localStorage.setItem("logo", investorLogo)
+
+        console.log(investorObj)
+
+        localStorage.setItem
+
+    }
+
+
+
+
+
+</script> -->

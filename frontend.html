@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+    <style>
+        h2{
+            text-align: center;
+        }
+        #container{
+            /* border: 1px solid red; */
+            width: 80%;
+            height: auto;
+            margin: auto;
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+        #container>div{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #container>div>img{
+            width: 100%;
+        }
+        #container>div>h1{
+            width: 100%;
+            font-size: 20px;
+            text-align: center;
+        }
+        #container>div>p{
+            width: 100%;
+            text-align: center;
+            margin-top: -10px;
+        }
+        #container>div>p+img{
+            /* border: 1px solid black; */
+            width: 50%;
+            margin-top: -20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Strategic Investors</h2>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+
+<script>
+    var investorArr = JSON.parse(localStorage.getItem("investorinfo"));
+
+    console.log(investorArr)
+
+    var mydata = investorArr.forEach(function(el) {
+
+       var card =  document.createElement("div")
+       container.append(card)
+       var image = document.createElement("img")
+       image.setAttribute("src",el.img)
+       
+       var h1 = document.createElement("h1")
+       h1.innerText = el.name
+       
+       var p = document.createElement("p")
+       p.innerText = el.company
+       
+       var logoimg = document.createElement("img")
+       logoimg.setAttribute("src",el.logo)
+
+       card.append(image,h1,p,logoimg)
+
+        
+    });
+
+
+
+
+</script>
