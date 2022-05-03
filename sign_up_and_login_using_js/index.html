@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+a{
+    /* border: 1px solid red; */
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    padding: 0px 30px;
+    justify-content: end;
+}
+
+#form{
+    box-shadow: rgba(24, 24, 24, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    width: 30%;
+    margin: auto;
+    margin-top: 100px;
+    padding: 0px 30px 20px 30px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#form>input{
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 20px;
+    padding: 10px ;
+}
+.submit{
+    margin-top: 50px;
+    cursor: pointer;
+}
+.submit:hover{
+    background-color: teal;
+    color: white;
+}
+label{
+    /* border: 1px solid black; */
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+    <div><a id=" logged" href="index.html"></a></div>
+    <div><a href="login.html">Login</a></div>
+    <form id="form">
+        <h2>Sign Up</h2>
+        <label>Email</label>
+        <input id="userEmail" type="email" placeholder="Enter your email">
+        <label>Mobile No.</label>
+        <input id="userMbl" type="number" placeholder="Enter your number">
+        <label>Password</label>
+        <input id="userPass" type="password" placeholder="Enter your password">
+        <input class="submit" type="submit" value="SIGN UP">
+    </form>
+</body>
+</html>
+
+<script>
+    
+
+    document.querySelector("#form").addEventListener("submit",userdatainput)
+
+    var userDataArr = JSON.parse(localStorage.getItem("usersData"))||[];
+    
+    function userdatainput(){
+        event.preventDefault()
+
+        var userDataObj = {};
+
+        var userEmail = document.querySelector("#userEmail").value
+        userDataObj.Email = userEmail;
+
+        var userMbl = document.querySelector("#userMbl").value
+        userDataObj.Mobile_No = userMbl;
+        
+        var userPass = document.querySelector("#userPass").value
+        userDataObj.Password = userPass;
+
+        userDataArr.push(userDataObj)
+
+        // console.log(userDataArr)
+
+        localStorage.setItem("usersData",JSON.stringify(userDataArr));
+
+      
+
+
+        document.querySelector("#userEmail").value = ""
+        document.querySelector("#userMbl").value = ""
+        document.querySelector("#userPass").value = ""
+
+       
+        
+       
+
+       window.location.href="login.html"
+
+    }
+   
+
+
+
+
+</script>

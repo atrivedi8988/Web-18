@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #form{
+    box-shadow: rgba(24, 24, 24, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    width: 30%;
+    margin: auto;
+    margin-top: 100px;
+    padding: 0px 30px 20px 30px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#form>input{
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-size: 20px;
+    padding: 10px ;
+}
+.submit{
+    margin-top: 50px;
+    cursor: pointer;
+}
+.submit:hover{
+    background-color: teal;
+    color: white;
+}
+h2{
+    margin-bottom: 50px;
+}
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <h2>LOGIN</h2>
+        <input id="userEmail" type="email" placeholder="Enter your Email">
+        <input id="userPass" type="password" placeholder="Enter your password">
+        <input class="submit" type="submit">
+    </form>
+
+</body>
+
+</html>
+
+<script>
+
+
+
+    var data = JSON.parse(localStorage.getItem("usersData"))
+    console.log(data)
+
+    document.querySelector("form").addEventListener("submit", loginfunc)
+
+    function loginfunc() {
+        event.preventDefault()
+
+        var userEmail = document.querySelector("#userEmail").value
+
+        var userPass = document.querySelector("#userPass").value
+
+        for (var i = 0; i < data.length; i++) {
+            if ((userEmail == data[i].Email) && (userPass == data[i].Password)) {
+                alert("login successful")
+            }
+            else{
+                alert("Wrong information")
+            }
+        }
+        location.reload()
+    }
+
+
+
+
+
+
+
+
+    // console.log(data[0].Email)
+
+</script>
